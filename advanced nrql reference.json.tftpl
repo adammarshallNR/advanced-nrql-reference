@@ -1,0 +1,2077 @@
+{
+  "name": "New Relic - Advanced NRQL - Reference",
+  "description": null,
+  "permissions": "PUBLIC_READ_ONLY",
+  "pages": [
+    {
+      "guid": "NDEyMDgzN3xWSVp8REFTSEJPQVJEfDQ3MDIwMTg5",
+      "name": "Widgets",
+      "description": null,
+      "widgets": [
+        {
+          "id": "523087668",
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 12,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "One of every widget!"
+          }
+        },
+        {
+          "id": "523087669",
+          "title": "Table",
+          "layout": {
+            "column": 1,
+            "row": 2,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT * from Transaction limit 10"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087670",
+          "title": "JSON Raw",
+          "layout": {
+            "column": 5,
+            "row": 2,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.json"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT * from Transaction limit 10"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087671",
+          "title": "Billboard (with traffic light)",
+          "layout": {
+            "column": 7,
+            "row": 2,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction"
+              }
+            ],
+            "thresholds": [
+              {
+                "alertSeverity": "WARNING",
+                "value": 100
+              },
+              {
+                "alertSeverity": "CRITICAL",
+                "value": 1000
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087672",
+          "title": "Billboard (with compare)",
+          "layout": {
+            "column": 9,
+            "row": 2,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction compare with 1 day ago"
+              }
+            ],
+            "thresholds": []
+          }
+        },
+        {
+          "id": "523087673",
+          "title": "Billboard (multiple values)",
+          "layout": {
+            "column": 11,
+            "row": 2,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) as 'Transactions', average(duration) as 'Avg Duration' from Transaction compare with 1 day ago"
+              }
+            ],
+            "thresholds": []
+          }
+        },
+        {
+          "id": "523087674",
+          "title": "Line chart",
+          "layout": {
+            "column": 1,
+            "row": 5,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction timeseries facet appName"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "id": "523087675",
+          "title": "Multi series line chart",
+          "layout": {
+            "column": 5,
+            "row": 5,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction timeseries "
+              },
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from PageView timeseries"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "id": "523087676",
+          "title": "Area chart",
+          "layout": {
+            "column": 9,
+            "row": 5,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.area"
+          },
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT average(duration) from Transaction facet appName timeseries"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087677",
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 8,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.stacked-bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT average(duration) from Transaction facet appName timeseries"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087678",
+          "title": "Pie chart",
+          "layout": {
+            "column": 5,
+            "row": 8,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": [
+            "MTYwNjg2MnxWSVp8REFTSEJPQVJEfDE4Nzg5Mjc"
+          ],
+          "visualization": {
+            "id": "viz.pie"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction facet appName\n"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087679",
+          "title": "Bullet chart",
+          "layout": {
+            "column": 9,
+            "row": 8,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.bullet"
+          },
+          "rawConfiguration": {
+            "limit": 500000,
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087680",
+          "title": "Bar chart",
+          "layout": {
+            "column": 1,
+            "row": 11,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": [
+            "MTYwNjg2MnxWSVp8REFTSEJPQVJEfDE4Nzg5Mjc"
+          ],
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction facet appName"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087681",
+          "title": "Funnel chart",
+          "layout": {
+            "column": 5,
+            "row": 11,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.funnel"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT funnel(session, where pageUrl='${home_page}' as 'Home', where pageUrl LIKE '%product%' as 'Results', where pageUrl LIKE '%cart%' as 'Cart', where pageUrl LIKE '%checkout%' as 'Checkout') from PageView"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087682",
+          "title": "Custom visualisation",
+          "layout": {
+            "column": 9,
+            "row": 11,
+            "width": 4,
+            "height": 6
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "76996c08-9a5a-48c2-8554-8e818cfe50f9.facet-chart"
+          },
+          "rawConfiguration": {
+            "fill": null,
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "select count(*) from Transaction facet appName limit 15 "
+              }
+            ],
+            "otherVisible": null,
+            "stroke": null
+          }
+        },
+        {
+          "id": "523087683",
+          "title": "Histogram",
+          "layout": {
+            "column": 1,
+            "row": 14,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.histogram"
+          },
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT histogram(duration,buckets: 10,width: 0.5) from Transaction"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087684",
+          "title": "Heatmap",
+          "layout": {
+            "column": 5,
+            "row": 14,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": [
+            "MTYwNjg2MnxWSVp8REFTSEJPQVJEfDE4Nzg5Mjc"
+          ],
+          "visualization": {
+            "id": "viz.heatmap"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT histogram(duration,buckets: 10,width: 0.5) from Transaction facet appName"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "guid": "NDEyMDgzN3xWSVp8REFTSEJPQVJEfDQ3MDIwMTkw",
+      "name": "Data Selection",
+      "description": null,
+      "widgets": [
+        {
+          "id": "523087685",
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 2,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "## Topics:\n* [WHERE logic](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#sel-where)\n* [IN](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#sel-where)\n* [LIKE](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#sel-where)\n* [IS (NOT) NULL](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#sel-where)\n* [Casting with numeric()](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#type-conversion)\n* [RLIKE regex](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#sel-where) uses: [Re2 Syntax](https://github.com/google/re2/wiki/Syntax)\n* [Regex Capture](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#func-capture)\n* [Filter()](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#func-filter) and [Percentage()](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#func-percentage)\n* [Multiple data sources](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#state-select)\n* List [data types](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#show-event-types) and [attributes](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#keyset)\n* [Filter by time](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#sel-since)\n\n## Other references\n* [New Relic attribute dictionary](https://docs.newrelic.com/attribute-dictionary/)\n* [Re2 Syntax](https://github.com/google/re2/wiki/Syntax)"
+          }
+        },
+        {
+          "id": "523087686",
+          "title": "WHERE Clause  by value",
+          "layout": {
+            "column": 3,
+            "row": 1,
+            "width": 2,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction facet appName where appName='${apm_appname}' or (appName='${apm_appname2}' and appName = '${apm_appname3}')\n"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087687",
+          "title": "Dealing with NULL / NOT NULL",
+          "layout": {
+            "column": 5,
+            "row": 1,
+            "width": 2,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT http.statusCode  from Transaction where http.statusCode != 200 and http.statusCode is not null"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087688",
+          "title": "Casting strings to numbers with numeric()",
+          "layout": {
+            "column": 7,
+            "row": 1,
+            "width": 2,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction where http.statusCode is not null facet http.statusCode where numeric(http.statusCode) !=200"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087689",
+          "title": "Simple regular expression with RLIKE",
+          "layout": {
+            "column": 9,
+            "row": 1,
+            "width": 2,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT uniques(appName) from Transaction where appName rlike '[C].+'"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087690",
+          "title": "RLIKE Example 2",
+          "layout": {
+            "column": 11,
+            "row": 1,
+            "width": 2,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${account_id}"
+                ],
+                "query": "select browserTransactionName from PageView where browserTransactionName rlike r'.*${domain_name}.*'"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "id": "523087691",
+          "title": "Basic aparse()",
+          "layout": {
+            "column": 1,
+            "row": 5,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${account_id}"
+                ],
+                "query": "FROM PageView\nSELECT aparse(browserTransactionName, '%${domain_name}:443/*') as example "
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "id": "523087692",
+          "title": "aparse Advanced",
+          "layout": {
+            "column": 3,
+            "row": 5,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${account_id}"
+                ],
+                "query": "WITH aparse(message, '%userId=*,%productId=*,%quantity=*') as (userId, productId, quantity)\nFROM Log \nSELECT userId, productId, quantity\nWHERE userId IS NOT NULL"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "id": "523087693",
+          "title": "REGEX  Capture",
+          "layout": {
+            "column": 5,
+            "row": 5,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "\nSELECT count(*) from Transaction where appName like '%Service' limit max facet capture(appName,r'(?P<service>.*)Service')\n"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087694",
+          "title": "Capture example 2",
+          "layout": {
+            "column": 7,
+            "row": 5,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction where appName like '%Service' limit max facet capture(appName,r'(pr1)?-?(?P<service>.*)Service')"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087695",
+          "title": "Capture simplify data example",
+          "layout": {
+            "column": 9,
+            "row": 5,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${account_id}"
+                ],
+                "query": "select  capture(browserTransactionName,r'.*${domain_name}:443(?P<name>.*)'), browserTransactionName from PageView where browserTransactionName rlike r'.*${domain_name}.*'\n"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "id": "523087696",
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 8,
+            "width": 12,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "# Filtering data within the same query\nThis is useful for calculating percentages and comparing subsets of data all within one query."
+          }
+        },
+        {
+          "id": "523087697",
+          "title": "Using filter()",
+          "layout": {
+            "column": 1,
+            "row": 9,
+            "width": 3,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT average(duration) as 'all', filter(average(duration), where name like '%GetCart') as 'GetCart Avg', filter(count(*), where name like '%GetCart') as 'GetCart Count' from Transaction where appName='Cart Service'"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087698",
+          "title": "Filter() for percentage",
+          "layout": {
+            "column": 4,
+            "row": 9,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) as 'all',  filter(count(*), where name like '%GetCart') as 'GetCart Count', (filter(count(*), where name like '%GetCart') / count(*) * 100) as 'percent GetCart'  from Transaction where appName='Cart Service'\n"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087699",
+          "title": "Using Percentage() for percentages instead of filter",
+          "layout": {
+            "column": 8,
+            "row": 9,
+            "width": 5,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) as 'all',  filter(count(*), where name like '%GetCart') as 'GetCart Count', (filter(count(*), where name like '%GetCart') / count(*) * 100) as 'percent GetCart' , percentage(count(*), where name like '%GetCart') as 'percent GetCart' from Transaction where appName='Cart Service'\n"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087700",
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 12,
+            "width": 12,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "# Data sources and Attributes\nYou can select data from multiple event types. You can also query what  event types are available and find out what attributes they have. Checkout the data dictionary to understand New Relic event attributes."
+          }
+        },
+        {
+          "id": "523087701",
+          "title": "Select from multiple tables",
+          "layout": {
+            "column": 1,
+            "row": 13,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) FROM Transaction, PageView\n"
+              }
+            ],
+            "thresholds": []
+          }
+        },
+        {
+          "id": "523087702",
+          "title": "Using Eventtype() to understand data source",
+          "layout": {
+            "column": 3,
+            "row": 13,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) FROM Transaction, PageView facet eventtype()\n"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087703",
+          "title": "eventtype() example",
+          "layout": {
+            "column": 5,
+            "row": 13,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT percentage(count(*), where eventtype()='PageView') as '% Pageviews' FROM Transaction, PageView\n\n"
+              }
+            ],
+            "thresholds": []
+          }
+        },
+        {
+          "id": "523087704",
+          "title": "Show event types",
+          "layout": {
+            "column": 7,
+            "row": 13,
+            "width": 3,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.json"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "show event types since 1 month ago"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087705",
+          "title": "Using keyset() for listing event attributes",
+          "layout": {
+            "column": 10,
+            "row": 13,
+            "width": 3,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.json"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "select keyset() from Transaction since 1 month ago\n"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087706",
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 16,
+            "width": 12,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "# Filter data by time window\nYou can select data for a specified time window using absolute or relative values in your SINCE and UNTIL clauses"
+          }
+        },
+        {
+          "id": "523087707",
+          "title": "Select by relative since clause",
+          "layout": {
+            "column": 1,
+            "row": 17,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction where appName='${apm_appname}'  TIMESERIES since 2 days ago until 1 day ago\n\n"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "id": "523087708",
+          "title": "Yesterday",
+          "layout": {
+            "column": 3,
+            "row": 17,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction where appName='${apm_appname}'  TIMESERIES since yesterday at '08:00'\n\n"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "id": "523087709",
+          "title": "Select by UTC date/time",
+          "layout": {
+            "column": 5,
+            "row": 17,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction where appName='${apm_appname}'  TIMESERIES since '2026-03-01 06:00' until '2026-03-03 08:00'\n"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "id": "523087710",
+          "title": "Compare with previous period",
+          "layout": {
+            "column": 7,
+            "row": 17,
+            "width": 3,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction where appName='${apm_appname}'  TIMESERIES since 7 days ago COMPARE WITH 1 week ago\n\n"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "id": "523087711",
+          "title": "Compare with billboard",
+          "layout": {
+            "column": 10,
+            "row": 17,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction where appName='${apm_appname}'  since 7 days ago COMPARE WITH 1 week ago\n\n"
+              }
+            ],
+            "thresholds": []
+          }
+        },
+        {
+          "id": "523087712",
+          "title": "Select only errors in time window",
+          "layout": {
+            "column": 1,
+            "row": 20,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${account_id}"
+                ],
+                "query": "select count(*) from Transaction where error is true since 7 days ago FACET deploymentName"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "guid": "NDEyMDgzN3xWSVp8REFTSEJPQVJEfDQ3MDIwMTkx",
+      "name": "Faceting",
+      "description": null,
+      "widgets": [
+        {
+          "id": "523087713",
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 1,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "## Topics:\n* [Multiple facets](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#sel-facet)\n* [Facet cases](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#sel-facet-cases)\n* [Facet buckets](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#func-buckets)\n* [Facet by time](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/nrql-query-tutorials/nrql-group-results-across-time/)"
+          }
+        },
+        {
+          "id": "523087714",
+          "title": "",
+          "layout": {
+            "column": 2,
+            "row": 1,
+            "width": 3,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT average(backendDuration) from PageView where city is not null facet city"
+              }
+            ],
+            "thresholds": []
+          }
+        },
+        {
+          "id": "523087715",
+          "title": "Group data by attribute using FACET",
+          "layout": {
+            "column": 5,
+            "row": 1,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT average(backendDuration) from PageView where city is not null facet name\n"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087716",
+          "title": "Group by multiple facets",
+          "layout": {
+            "column": 9,
+            "row": 1,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT average(backendDuration) from PageView where city is not null facet name, countryCode, city limit max\n"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087717",
+          "title": "Facet by  fixed bucket sizes using BUCKETS",
+          "layout": {
+            "column": 1,
+            "row": 4,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from PageView facet buckets(duration,15,10)\n"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087718",
+          "title": "Facet by custom cases",
+          "layout": {
+            "column": 3,
+            "row": 4,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from PageView  facet cases(where backendDuration < 0.5 as '<0.5', where backendDuration < 1 as '0.5-1', where backendDuration < 5 as '1-5', where backendDuration >= 5 as '>5')\n"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087719",
+          "title": "Facet custom non-numeric cases",
+          "layout": {
+            "column": 5,
+            "row": 4,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from PageView where appName='${browser_appname}'  facet cases(where browserTransactionName like '%/product/*' as 'Product', where browserTransactionName like '%/cart*' as 'Cart', where browserTransactionName like '%' as 'everythingElse')\n"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087720",
+          "title": "Facet by time hourOf()",
+          "layout": {
+            "column": 7,
+            "row": 4,
+            "width": 3,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) FROM PageView SINCE 7 day ago FACET hourOf(timestamp)\n"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087721",
+          "title": "Histogram()",
+          "layout": {
+            "column": 10,
+            "row": 4,
+            "width": 3,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.histogram"
+          },
+          "rawConfiguration": {
+            "chartStyles": {
+              "gradient": {
+                "enabled": false
+              }
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${account_id}"
+                ],
+                "query": "SELECT histogram(duration,15,10) from PageView \n"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "thresholds": {
+              "isLabelVisible": true
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "guid": "NDEyMDgzN3xWSVp8REFTSEJPQVJEfDQ3MDIwMTky",
+      "name": "Timeseries",
+      "description": null,
+      "widgets": [
+        {
+          "id": "523087722",
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 1,
+            "height": 6
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "## Topics\n* [Bucket size](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#sel-timeseries)\n* Threshold lines\n* Multiple series\n* [Rate()](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#func-rate)\n* [Sliding windows](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/nrql-query-tutorials/create-smoother-charts-sliding-windows/)\n* [Clamping](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-math-using-select/#clamp_max-clamp_min)"
+          }
+        },
+        {
+          "id": "523087723",
+          "title": "",
+          "layout": {
+            "column": 2,
+            "row": 1,
+            "width": 9,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "# Bucket Size\nAs you adjust the time window the bucket size is automaticlly re-calculated to work with the amoutn of data being displayed. Fixed bucket sizes will be ignored when there would be more than 366 buckets. Use MAX in order to always have as many buckets and highest fidelity detail as possible."
+          }
+        },
+        {
+          "id": "523087724",
+          "title": "Threshold lines",
+          "layout": {
+            "column": 11,
+            "row": 1,
+            "width": 2,
+            "height": 5
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*), 50000 as 'high', 20000 as 'low' from Transaction where appName='${apm_appname}' since 6 hour ago timeseries\n"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "id": "523087725",
+          "title": "Reference chart",
+          "layout": {
+            "column": 2,
+            "row": 3,
+            "width": 3,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction where appName='${apm_appname}' since 6 hour ago timeseries\n"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "id": "523087726",
+          "title": "Fixed bucket size",
+          "layout": {
+            "column": 5,
+            "row": 3,
+            "width": 3,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction where appName='${apm_appname}' since 6 hour ago timeseries 10 minutes"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "id": "523087727",
+          "title": "MAX Bucket size",
+          "layout": {
+            "column": 8,
+            "row": 3,
+            "width": 3,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction where appName = '${apm_appname}' since  24 hours ago TIMESERIES MAX "
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "id": "523087728",
+          "title": "",
+          "layout": {
+            "column": 2,
+            "row": 6,
+            "width": 6,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "# Rate() function explained\n\nCompare the below charts. As you change the time window (using the time picker) the Y axis on the left chart changes to accommodate the bucket size. The chart on the right using rate() remains a consistent y axis."
+          }
+        },
+        {
+          "id": "523087729",
+          "title": "",
+          "layout": {
+            "column": 8,
+            "row": 6,
+            "width": 5,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "# Slideby() for smoothing charts\nFor spiky charts or calculating the moving average use the slideby() function"
+          }
+        },
+        {
+          "id": "523087730",
+          "title": "Compare with ",
+          "layout": {
+            "column": 1,
+            "row": 7,
+            "width": 1,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) as '${apm_appname}' from Transaction where appName='${apm_appname}' since 6 hour ago timeseries max COMPARE WITH  6 hours ago"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "id": "523087731",
+          "title": "Count of transactions without using rate",
+          "layout": {
+            "column": 2,
+            "row": 8,
+            "width": 3,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT count(*) from Transaction where appName='${apm_appname}' since 6 hour ago timeseries 1 minute\n"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "id": "523087732",
+          "title": "Rate Function ",
+          "layout": {
+            "column": 5,
+            "row": 8,
+            "width": 3,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT rate(count(*), 1 minute) as 'RPM' from Transaction where appName='${apm_appname}' since 6 hours ago timeseries 1 minute\n"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "id": "523087733",
+          "title": "Slideby moving average",
+          "layout": {
+            "column": 8,
+            "row": 8,
+            "width": 5,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT rate(count(*), 1 minute) as '30 secs' from Transaction where appName='${apm_appname}' since 2 hour ago timeseries 30 seconds\n"
+              },
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT rate(count(*), 1 minute) as '5 mins' from Transaction where appName='${apm_appname}' since 2 hour ago timeseries 5 minutes\n"
+              },
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT rate(count(*), 1 minute) as 'slideby' from Transaction where appName='${apm_appname}' since 2 hour ago timeseries 5 minutes slide by 30 seconds\n"
+              }
+            ],
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "guid": "NDEyMDgzN3xWSVp8REFTSEJPQVJEfDQ3MDIwMTkz",
+      "name": "Nested Aggregation",
+      "description": null,
+      "widgets": [
+        {
+          "id": "523087734",
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 2,
+            "height": 6
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "## Topics:\n* What problem does nested aggregation solve?\n* [Nested aggregation Docs](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/nrql-query-tutorials/nested-aggregation-make-ordered-computations-single-query/)"
+          }
+        },
+        {
+          "id": "523087735",
+          "title": "",
+          "layout": {
+            "column": 3,
+            "row": 1,
+            "width": 8,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "Use nested aggregation to further aggregate data returned from NRDB. For instance in this example we can list servers by average CPU. But to answer the question \"How many servers have an average CPU above 60%\" we need nested aggregation."
+          }
+        },
+        {
+          "id": "523087736",
+          "title": "Average CPU ",
+          "layout": {
+            "column": 3,
+            "row": 2,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${account_id}"
+                ],
+                "query": "select average(cpuPercent) as 'avgCpu' from SystemSample facet host.id limit 100\n"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "id": "523087737",
+          "title": "How many servers are running hot?",
+          "layout": {
+            "column": 7,
+            "row": 2,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "chartStyles": {
+              "lineInterpolation": "linear"
+            },
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${account_id}"
+                ],
+                "query": "select count(*) as 'HotCPU' from (select average(cpuPercent) as 'avgCpu' from SystemSample facet host.id limit max) where avgCpu > 20\n"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "id": "523087738",
+          "title": "Max RPM (and by App)",
+          "layout": {
+            "column": 3,
+            "row": 5,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "chartStyles": {
+              "lineInterpolation": "linear"
+            },
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "markers": {
+              "displayedTypes": {
+                "criticalViolations": false,
+                "deployments": true,
+                "relatedDeployments": true,
+                "warningViolations": false
+              }
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${account_id}"
+                ],
+                "query": "select rate(count(*),1 minute) as 'rpm' from Transaction facet appName timeseries 5 minutes since 24 hours ago\n"
+              },
+              {
+                "accountIds": [
+                  "${account_id}"
+                ],
+                "query": "select max(rpm) from (select rate(count(*),1 minute) as 'rpm' from Transaction facet appName timeseries 5 minutes) since 24 hours ago timeseries"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "thresholds": {
+              "isLabelVisible": true
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "guid": "NDEyMDgzN3xWSVp8REFTSEJPQVJEfDQ3MDIwMTk0",
+      "name": "Metrics",
+      "description": null,
+      "widgets": [
+        {
+          "id": "523087739",
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 2,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "## Topics\n* [Querying metric data](https://docs.newrelic.com/docs/telemetry-data-platform/get-data/apis/query-metric-data-type/)\n* [Metric wildcards](https://docs.newrelic.com/docs/telemetry-data-platform/get-data/apis/query-metric-data-type/#query-multiple-metrics-wildcards)\n* [Querying timeslice data](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/nrql-query-tutorials/query-apm-metric-timeslice-data-nrql/)"
+          }
+        },
+        {
+          "id": "523087740",
+          "title": "Metric AWS",
+          "layout": {
+            "column": 3,
+            "row": 1,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "chartStyles": {
+              "lineInterpolation": "linear"
+            },
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "markers": {
+              "displayedTypes": {
+                "criticalViolations": false,
+                "deployments": true,
+                "relatedDeployments": true,
+                "warningViolations": false
+              }
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${account_id}"
+                ],
+                "query": "SELECT average(`aws.ec2.CPUUtilization`) FROM Metric FACET entityName SINCE  24 hours ago TIMESERIES  MAX "
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "thresholds": {
+              "isLabelVisible": true
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "id": "523087741",
+          "title": "What metrics are available?",
+          "layout": {
+            "column": 7,
+            "row": 1,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "FROM Metric SELECT uniques(metricName)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087742",
+          "title": "What attributes are available for my metric?",
+          "layout": {
+            "column": 1,
+            "row": 4,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.json"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountId": "${account_id}",
+                "query": "SELECT keyset() from Metric where metricName='aws.ec2.CPUUtilization'"
+              }
+            ]
+          }
+        },
+        {
+          "id": "523087743",
+          "title": " Timeslice",
+          "layout": {
+            "column": 5,
+            "row": 4,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [
+                  "${account_id}"
+                ],
+                "query": "SELECT apdex(newrelic.timeslice.value) FROM Metric WHERE appName='${apm_appname}' AND newrelic.timeslice.value IS NOT NULL and metricTimesliceName like 'EndUser/Apdex/Browser/Linux/%' WITH METRIC_FORMAT 'EndUser/Apdex/Browser/Linux/{flavour}/%'  facet flavour "
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "guid": "NDEyMDgzN3xWSVp8REFTSEJPQVJEfDQ3MDIwMTk1",
+      "name": "Learn more",
+      "description": null,
+      "widgets": [
+        {
+          "id": "523087744",
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 7,
+            "height": 9
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "![Logo](https://github.com/jsbnr/nr-advanced-dashboard-nrql/raw/main/resources/nrqllessonslogo.png)\n\nFind the NRQL lessons app in the App Catalog. The application teaches you how to use NRQL. It also features a handy index of functions and examples.\n\n\n![screenshot](https://raw.githubusercontent.com/jsbnr/nr-advanced-dashboard-nrql/main/resources/nrqllessons.png)\n"
+          }
+        },
+        {
+          "id": "523087745",
+          "title": "",
+          "layout": {
+            "column": 9,
+            "row": 1,
+            "width": 4,
+            "height": 9
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "# Further learning resources\n\n* [NRQL Function Reference Documentation](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/)\n* NRU Webinars at: [learn.newrelic.com](https://learn.newrelic.com/)\n\n![webinars](https://github.com/jsbnr/nr-advanced-dashboard-nrql/raw/main/resources/webinars.png)"
+          }
+        }
+      ]
+    }
+  ],
+  "variables": []
+}
